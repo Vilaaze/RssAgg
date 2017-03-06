@@ -1,0 +1,3 @@
+http://feeds.bbci.co.uk/news/world/rss.xml
+http://rss.cnn.com/rss/cnn_world.rss
+http://feeds.reuters.com/Reuters/worldNews
