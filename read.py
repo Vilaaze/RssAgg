@@ -1,5 +1,19 @@
 
 import json
+dict_r = []
+
+f_dict = open("dict_r.txt", "r")
+for word in f_dict:
+	dict_r.append(word)
+
+f_dict.close()
+
+dict_p = []
+f_dict = open("dict_p.txt", "r")
+for punc in f_dict:
+	dict_p.append(punc)
+
+f_dict.close()
 
 db = []
 try:
@@ -14,9 +28,21 @@ except:
 
 for story in db:
 	print '---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ----'
-	print story['title'], ':'
+	
+	title = story['title']
+	summ = story['summary']
+	for word in dict_r:
+		title = title.replace(' '+word.strip()+' ', ' ')
+		summ = summ.replace(' ' + word.strip() + ' ', ' ')
+
+	for punc in dict_p:
+		title = title.replace(punc.strip(), '')
+		summ = summ.replace(punc.strip(), '')
+	
+	print title, ':'
 	print
 
-	print story['summary']
+	print summ
 	print story['link']
 	print
+
