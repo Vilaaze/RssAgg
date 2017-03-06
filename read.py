@@ -11,6 +11,7 @@ def load_d(f_name):
 		nd = []
 		for word in f_dict:
 			nd.append(word.strip())
+			nd.append(word.strip().title())
 	
 		f_dict.close()
 	except:
