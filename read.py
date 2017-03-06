@@ -4,6 +4,7 @@
 # Read in JSON and strip out
 # indistinct words and punctuation
 
+# Load contents into an array
 def load_d(f_name):
 	try:
 		f_dict = open(f_name, 'r')
@@ -38,10 +39,12 @@ for story in db:
 	print '---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ----'
 	
 	title = story['title']
-	summ = story['summary']
+	summ  = story['summary']
+
 	for word in dict_r:
-		title = title.replace(' '+word.strip()+' ', ' ')
-		summ = summ.replace(' ' + word.strip() + ' ', ' ')
+		n_word = ' ' + word.strip() + ' '
+		title = title.replace(n_word, ' ')
+		summ  = summ.replace(n_word, ' ')
 
 	for punc in dict_p:
 		title = title.replace(punc.strip(), '')
