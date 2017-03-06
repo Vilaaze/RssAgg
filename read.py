@@ -1,30 +1,38 @@
+#
+# Brian John Sedwick Reeder
+#
+# Read in JSON and strip out
+# indistinct words and punctuation
+
+def load_d(f_name):
+	try:
+		f_dict = open(f_name, 'r')
+		nd = []
+		for word in f_dict:
+			nd.append(word.strip())
+	
+		f_dict.close()
+	except:
+		print f_name, ' not found...'
+		nd = -1
+
+	return nd
 
 import json
-dict_r = []
 
-f_dict = open("dict_r.txt", "r")
-for word in f_dict:
-	dict_r.append(word)
-
-f_dict.close()
-
-dict_p = []
-f_dict = open("dict_p.txt", "r")
-for punc in f_dict:
-	dict_p.append(punc)
-
-f_dict.close()
+dict_r = load_d('dict_r.txt')
+dict_p = load_d('dict_p.txt')
 
 db = []
 try:
-	f_db = open("JSON.txt", "r")
+	f_db = open('JSON.txt', 'r')
 	for s in f_db:
 		db.append(json.loads(s))
 	
 	f_db.close()
 
 except:
-	print "No existing JSON"
+	print 'No existing JSON'
 
 for story in db:
 	print '---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ----'
