@@ -123,4 +123,7 @@ sometimes
 likely
 as
 was
-
+is
+because
+said
+says
