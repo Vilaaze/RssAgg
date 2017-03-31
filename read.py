@@ -33,70 +33,59 @@ def load_d(f_name):
 
 import json
 
+
 ###########################################
+# 
+# Display Story
 #
-# Main
-#
-dict_r = load_d('dict_r.txt')
-dict_p = load_d('dict_p.txt')
-
-db = []
-# Attempt to open database of stories
-try:
-	f_db = open('JSON.txt', 'r')
-	for s in f_db:
-		db.append(json.loads(s))
+# Print out individual cards for each story
+def display_story(story):
+	print '---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ----'
 	
-	f_db.close()
-
-except:
-	print 'No existing JSON'
-
-for story in db:
-	print '---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ----'
-	
+	dict_r = load_d('dict_r.txt')
+	dict_p = load_d('dict_p.txt')
+		
 	title = story['title']
 	summ  = story['summary']
-
-        # Sanitize each sentence of each word and punctuation
+	
+	# Sanitize each sentence of each word and punctuation
 	for word in dict_r:
 		n_word = ' ' + word.strip() + ' '
 		title = title.replace(n_word, ' ')
 		summ  = summ.replace(n_word, ' ')
-
+	
 	title = title.replace('U.S. ', 'United States ')
 	summ = summ.replace('U.S. ', 'United States ')
 	title = title.replace('US ', 'United States ')
 	summ = summ.replace('US ', 'United States ')
-	
 	title = title.replace('E.U. ', 'European Union ')
 	summ = summ.replace('E.U. ', 'European Union ')
 	title = title.replace('EU ', 'European Union ')
 	summ = summ.replace('EU ', 'European Union ')
-
-
+	
+	
 	title = title.replace('U.N. ', 'United Nations ')
 	summ = summ.replace('U.N. ', 'United Nations ')
 	title = title.replace('UN ', 'United Nations ')
 	summ = summ.replace('UN ', 'United Nations ')
-
+	
 	for p in ['.', '!', '?']:
 		title = title.replace(p, ' ')
 		summ = summ.replace(p, ' ')
 		
-
+	
 	for punc in dict_p:
 		title = title.replace(punc.strip(), ' ')
 		summ = summ.replace(punc.strip(), ' ')
-		
+			
 	title = title.replace('  ', ' ')
 	summ = summ.replace('  ', ' ')
-	
-        # Display Sanitized Text
+		
+	# Display Sanitized Text
 	print title, ':'
 	print
-
+	
 	print summ
 	print story['link']
 	print
-
+###########################################
